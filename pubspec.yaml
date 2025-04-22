@@ -1,0 +1,66 @@
+name: web_demo
+description: "A new Flutter project."
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  equatable: ^2.0.5
+  # For bloc state management
+  flutter_bloc: ^9.1.0
+
+  get: ^4.6.5
+
+  dio: ^5.8.0+1
+
+  intl: ^0.20.2
+
+  universal_io: ^2.0.5
+
+  pdf: ^3.9.0
+  pdfx: ^2.3.0
+
+  #  maps
+  google_maps_flutter: ^2.2.0
+
+  flutter_dotenv: ^5.0.2
+
+  # data storage
+  shared_preferences: ^2.0.15
+
+  universal_html: ^2.0.0
+
+  #  location
+  geolocator: ^14.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  google_fonts: ^6.2.1
+  lottie: ^3.3.1
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+
+  assets:
+    - assets/images/
+    - assets/.env
