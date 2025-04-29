@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:web_demo/ui/project/widgets/project_widgets.dart';
 
 import '../../../data/model/model.dart';
 import '../../../data/model/project/photo_voltaic_system.dart';
 import '../../../utils/utils.dart';
 import '../../../theme/text_styles.dart';
+import '../../common/common.dart';
 
 class ProjectItemWidget extends StatefulWidget {
   final Project project;
-  final Size size;
   final Function(Project) onProjectClicked;
 
   const ProjectItemWidget({
     super.key,
     required this.project,
-    required this.size,
     required this.onProjectClicked,
   });
 
@@ -45,67 +46,73 @@ class _ProjectItemWidgetState extends State<ProjectItemWidget> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         padding: const EdgeInsets.all(8),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Center(
-                child: Icon(
-                  Icons.solar_power,
-                  color: Colors.yellow,
-                  size: 60.0,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Text(widget.project.name, style: pageSubtitleStyle(widget.size)),
-              const SizedBox(height: 8),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text('Created at:', style: pageSubtitleStyle(widget.size)),
-                  const SizedBox(width: 8),
-                  Text(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(child: SystemItemIcon(pvs: widget.project.systems.first)),
+            const SizedBox(height: 20),
+            Text(
+              widget.project.name.capitalize!,
+              style: WebTextStyles.bodyXLargeSemiBold,
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Created at:', style: WebTextStyles.bodyXLargeSemiBold),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
                     parsedDateToPrettyString,
-                    style: pageContentStyle(widget.size),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: WebTextStyles.bodyLargeMedium,
                   ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Status:', style: pageSubtitleStyle(widget.size)),
-                  const SizedBox(width: 8),
-                  Text(
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Status:', style: WebTextStyles.bodyLargeSemiBold),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
                     status.toUpperCase(),
-                    style: pageSubtitleStyle(
-                      widget.size,
-                    ).copyWith(color: statusColor),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: WebTextStyles.bodyLargeMedium.copyWith(
+                      color: statusColor,
+                    ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('PVS List:', style: pageSubtitleStyle(widget.size)),
-                  const SizedBox(width: 8),
-                  Text(
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('PVS List:', style: WebTextStyles.bodyLargeSemiBold),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
                     _pvsListText(widget.project.systems),
-                    style: pageSubtitleStyle(
-                      widget.size,
-                    ).copyWith(color: statusColor),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: WebTextStyles.bodyLargeMedium.copyWith(
+                      color: statusColor,
+                    ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 8),
-            ],
-          ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+          ],
         ),
       ),
     );

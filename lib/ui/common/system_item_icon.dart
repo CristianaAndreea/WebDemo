@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../data/model/project/photo_voltaic_system.dart';
+import '../../data/model/project/photo_voltaic_system.dart';
 
 class SystemItemIcon extends StatelessWidget {
   final PhotoVoltaicSystem pvs;

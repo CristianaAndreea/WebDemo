@@ -3,6 +3,8 @@ import 'package:web_demo/data/model/project/photo_voltaic_system.dart';
 import 'package:web_demo/theme/text_styles.dart';
 import 'package:web_demo/ui/project/widgets/project_widgets.dart';
 
+import '../../common/common.dart';
+
 class SystemListItemWidget extends StatelessWidget {
   final PhotoVoltaicSystem pvs;
   final Function(bool) onSelected;

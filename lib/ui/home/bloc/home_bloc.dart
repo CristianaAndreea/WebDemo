@@ -37,9 +37,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             responseDataList
                 .map((projectJson) => Project.fromMap(projectJson))
                 .toList();
-
-        // projects.sort((project1, project2) =>
-        //     project1.createdAt!.compareTo(project2.createdAt!));
         filterActive(projects);
         emit(
           state.copyWith(
@@ -82,22 +79,24 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeEventFilter event,
     Emitter<HomeState> emit,
   ) async {
-    if (event.filterType == "Oldest") {
-      state.projects.sort(
-        (project1, project2) =>
-            project1.createdAt!.compareTo(project2.createdAt!),
-      );
-      emit(state.copyWith(projects: state.projects));
+    switch (event.filterType) {
+      case "Oldest":
+        state.projects.sort(
+          (project1, project2) =>
+              project1.createdAt!.compareTo(project2.createdAt!),
+        );
+        break;
+      case "Active":
+        state.projects.sort(
+          (project1, project2) =>
+              (project1.active == project2.active
+                  ? 0
+                  : (project1.active == false ? 1 : -1)),
+        );
+        break;
     }
-    if (event.filterType == "Active") {
-      state.projects.sort(
-        (project1, project2) =>
-            (project1.active == project2.active
-                ? 0
-                : (project1.active == false ? 1 : -1)),
-      );
-      emit(state.copyWith(projects: state.projects));
-    }
+
+    emit(state.copyWith(projects: state.projects));
   }
 
   void filterActive(List<Project> projects) {

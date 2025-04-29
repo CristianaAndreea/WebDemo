@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../theme/text_styles.dart';
 
 class ProjectsFilterWidget extends StatefulWidget {
-  final Size size;
   final List<String> filters;
   final Function(String) onFilterChanged;
   final VoidCallback onAddProjectClicked;
 
   const ProjectsFilterWidget({
     super.key,
-    required this.size,
     required this.filters,
     required this.onFilterChanged,
     required this.onAddProjectClicked,

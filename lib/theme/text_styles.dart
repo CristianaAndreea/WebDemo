@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// General styles
-TextStyle pageSubtitleStyle(Size size) => GoogleFonts.ubuntu(
-      fontSize: size.height * 0.030,
-    );
-
 TextStyle pageContentStyle(Size size) => GoogleFonts.ubuntu(
   fontSize: size.height * 0.025,
 );

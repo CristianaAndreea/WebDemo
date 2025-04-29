@@ -29,39 +29,42 @@ class _HomeContentWidgetState extends State<HomeContentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(40.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Projects", style: WebTextStyles.bodyXLargeSemiBold),
-            const SizedBox(height: 40),
-            Container(width: double.infinity, color: Colors.black12, height: 2),
-            const SizedBox(height: 40),
-            ProjectsFilterWidget(
-              size: size,
-              filters: filters,
-              onFilterChanged: (value) {
-                _homeBloc.add(HomeEventFilter(filterType: value));
-              },
-              onAddProjectClicked: () {
-                var route = ProjectRoute(
-                  route: routeProjectDetails,
-                  configuration: PageConfiguration.add,
-                );
-                var event = HomeEventNavigate(route: route);
-                _homeBloc.add(event);
-              },
-            ),
-            const SizedBox(height: 40),
-            MyProjectsGridviewWidget(size: size),
-            const SizedBox(height: 40),
-          ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Projects", style: WebTextStyles.bodyXLargeSemiBold),
+              const SizedBox(height: 40),
+              Container(
+                width: double.infinity,
+                color: Colors.black12,
+                height: 2,
+              ),
+              const SizedBox(height: 40),
+              ProjectsFilterWidget(
+                filters: filters,
+                onFilterChanged: (value) {
+                  _homeBloc.add(HomeEventFilter(filterType: value));
+                },
+                onAddProjectClicked: () {
+                  var route = ProjectRoute(
+                    route: routeProjectDetails,
+                    configuration: PageConfiguration.add,
+                  );
+                  var event = HomeEventNavigate(route: route);
+                  _homeBloc.add(event);
+                },
+              ),
+              const SizedBox(height: 40),
+              ProjectsGridviewWidget(),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );

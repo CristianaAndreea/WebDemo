@@ -3,7 +3,6 @@ export 'project_content_widget.dart';
 export 'pvs_widget.dart';
 export 'system_area_input_widget.dart';
 export 'system_grid_item_widget.dart';
-export 'system_item_icon.dart';
 export 'system_list_item_widget.dart';
 export 'system_orientation_input_widget.dart';
 export 'system_parameters_widget.dart';

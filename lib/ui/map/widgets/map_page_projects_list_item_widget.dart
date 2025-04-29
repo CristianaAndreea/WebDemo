@@ -66,7 +66,7 @@ class _MapPageProjectsListItemWidgetState
                 Expanded(child: Container()),
                 Text(
                   widget.project.name,
-                  style: pageSubtitleStyle(widget.size),
+                  style: WebTextStyles.bodyXLargeSemiBold,
                 ),
                 Expanded(child: Container()),
               ],
