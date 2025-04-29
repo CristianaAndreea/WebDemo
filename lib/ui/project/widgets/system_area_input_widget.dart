@@ -35,7 +35,7 @@ class _SystemAreaInputWidgetState extends State<SystemAreaInputWidget> {
     return TextFormField(
       controller: areaController,
       decoration: const InputDecoration(
-        prefixIcon: Icon(Icons.square_outlined),
+        prefixIcon: Icon(Icons.crop_free),
         labelText: 'Area (square meters)',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),

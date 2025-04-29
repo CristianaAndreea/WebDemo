@@ -10,7 +10,7 @@ import 'package:web_demo/ui/project/widgets/project_widgets.dart';
 import '../../../data/model/model.dart';
 import '../bloc/project.dart';
 import '../report/system_report_widget.dart';
-import '../system/system_parameters_widget.dart';
+import 'system_parameters_widget.dart';
 
 enum SystemGridConfiguration { viewOnly, edit }
 
@@ -115,7 +115,15 @@ class _ProjectContentWidgetState extends State<ProjectContentWidget> {
                             : SystemGridConfiguration.viewOnly,
                   ),
                   const SizedBox(height: 30),
-                  _systemParameters(state.pvsList),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      if (constraints.maxWidth > 600) {
+                        return _systemParameters(state.pvsList);
+                      } else {
+                        return const SizedBox();
+                      }
+                    },
+                  ),
                   const SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -144,7 +152,6 @@ class _ProjectContentWidgetState extends State<ProjectContentWidget> {
       itemCount: selectedPhotovoltaicSystems.length,
       itemBuilder: (BuildContext context, int index) {
         return SystemParametersWidget(
-          size: widget.size,
           system: selectedPhotovoltaicSystems[index],
         );
       },

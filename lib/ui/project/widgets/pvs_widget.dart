@@ -78,17 +78,28 @@ class _PVSWidgetState extends State<PVSWidget> {
           } else {
             // Return a ListView if space is limited
             return ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
               itemCount: widget.pvsList.length,
               itemBuilder: (context, index) {
                 final system = widget.pvsList[index];
-                return ListTile(
-                  title: Text('system.name'),
-                  onTap:
-                      () => {
-                        widget.configuration == SystemGridConfiguration.viewOnly
-                            ? widget.onSystemClick
-                            : null,
-                      },
+                return SystemListItemWidget(
+                  pvs: system,
+                  onSelected: (bool value) {
+                    final updatedPVS = system.copyWith(selected: value);
+                    final event = ProjectEventUpdatePVSList(
+                      updatedPVS: updatedPVS,
+                    );
+                    _projectBloc.add(event);
+                  },
+                  onExpanded: () {
+                    final value = !system.expanded;
+                    final updatedPVS = system.copyWith(expanded: value);
+                    final event = ProjectEventUpdatePVSList(
+                      updatedPVS: updatedPVS,
+                    );
+                    _projectBloc.add(event);
+                  },
                 );
               },
             );

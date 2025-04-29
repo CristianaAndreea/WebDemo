@@ -37,7 +37,7 @@ class _SystemTiltInputWidgetState extends State<SystemTiltInputWidget> {
     return TextFormField(
       controller: tiltController,
       decoration: const InputDecoration(
-        prefixIcon: Icon(Icons.rotate_90_degrees_cw_outlined),
+        prefixIcon: Icon(Icons.architecture),
         labelText: 'Tilt (degrees)',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),

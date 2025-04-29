@@ -26,7 +26,7 @@ class _MyProjectsGridviewWidgetState extends State<MyProjectsGridviewWidget> {
   @override
   void initState() {
     super.initState();
-    _homeBloc = BlocProvider.of<HomeBloc>(context);
+    _homeBloc = BlocProvider.of<HomeBloc>(context)..add(HomeEventGetDetails());
   }
 
   @override

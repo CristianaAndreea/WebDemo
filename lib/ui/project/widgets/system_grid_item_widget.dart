@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_demo/data/model/project/photo_voltaic_system.dart';
 import 'package:web_demo/theme/text_styles.dart';
+import 'package:web_demo/ui/project/widgets/project_widgets.dart';
 
 import 'project_content_widget.dart';
 
@@ -53,31 +54,7 @@ class _SystemGridItemWidgetState extends State<SystemGridItemWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Stack(
-                    children: [
-                      Icon(Icons.solar_power, size: 60.0, color: Colors.orange),
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          width: 24.0,
-                          height: 24.0,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            // Background color for better visibility
-                            shape: BoxShape.circle, // Circular shape
-                          ),
-                          child: Icon(
-                            _getIconForSystem(widget.system),
-                            size: 20.0,
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                Center(child: SystemItemIcon(pvs: widget.system)),
                 const SizedBox(height: 20),
                 RichText(
                   text: TextSpan(
@@ -145,18 +122,5 @@ class _SystemGridItemWidgetState extends State<SystemGridItemWidget> {
         ],
       ),
     );
-  }
-
-  IconData _getIconForSystem(PhotoVoltaicSystem system) {
-    switch (system.systemType) {
-      case 'On Grid':
-        return Icons.electrical_services;
-      case 'Off Grid':
-        return Icons.battery_charging_full;
-      case 'Hybrid':
-        return Icons.electric_bolt;
-      default:
-        return Icons.error;
-    }
   }
 }

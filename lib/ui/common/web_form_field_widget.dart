@@ -23,6 +23,7 @@ class WebTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: prefixIcon,
         hintText: hintText,
+        labelText: hintText,
         hintStyle: WebTextStyles.bodyMediumRegular,
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),

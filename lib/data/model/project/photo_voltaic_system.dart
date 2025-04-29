@@ -12,6 +12,7 @@ class PhotoVoltaicSystem {
   final String orientation;
   final String tiltAngle;
   final bool selected;
+  final bool expanded;
 
   PhotoVoltaicSystem({
     required this.id,
@@ -25,6 +26,7 @@ class PhotoVoltaicSystem {
     required this.orientation,
     required this.tiltAngle,
     this.selected = false,
+    this.expanded = false,
   });
 
   factory PhotoVoltaicSystem.fromMap(Map<String, dynamic> json) {
@@ -89,6 +91,7 @@ class PhotoVoltaicSystem {
 
   PhotoVoltaicSystem copyWith({
     bool? selected,
+    bool? expanded,
     String? tiltAngle,
     String? orientation,
     String? area,
@@ -106,6 +109,7 @@ class PhotoVoltaicSystem {
       orientation: orientation?? this.orientation,
       tiltAngle: tiltAngle?? this.tiltAngle,
       selected: selected ?? this.selected,
+      expanded: expanded ?? this.expanded,
     );
   }
 

@@ -38,7 +38,7 @@ class _SystemOrientationInputWidgetState
     return TextFormField(
       controller: orientationController,
       decoration: const InputDecoration(
-        prefixIcon: Icon(Icons.arrow_circle_right_outlined),
+        prefixIcon: Icon(Icons.explore),
         labelText: 'Orientation (N/E/S/W)',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
