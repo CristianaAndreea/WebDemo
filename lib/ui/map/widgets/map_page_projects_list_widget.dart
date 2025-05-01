@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:web_demo/routes/project_route.dart';
 import 'package:web_demo/theme/text_styles.dart';
+import 'package:web_demo/ui/home/widgets/home_widgets.dart';
 
 import '../../../data/model/model.dart';
 import '../../../routes/routes.dart';
@@ -45,10 +46,7 @@ class _MapPageProjectsListWidgetState extends State<MapPageProjectsListWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Projects",
-                style: WebTextStyles.bodyXLargeSemiBold,
-              ),
+              Text("Projects", style: WebTextStyles.bodyXLargeSemiBold),
               InkWell(
                 onTap: () {
                   var projectRoute = ProjectRoute(
@@ -72,16 +70,13 @@ class _MapPageProjectsListWidgetState extends State<MapPageProjectsListWidget> {
           ),
         ),
         const SizedBox(height: 8),
-        Container(
-          width: double.infinity,
-          color: Colors.black12,
-          height: 2,
-        ),
+        Container(width: double.infinity, color: Colors.black12, height: 2),
         const SizedBox(height: 8),
         Expanded(
-          child: widget.projects.isEmpty
-              ? _buildEmptyListState(widget.size)
-              : _buildListState(),
+          child:
+              widget.projects.isEmpty
+                  ? _buildEmptyListState(widget.size)
+                  : _buildListState(),
         ),
       ],
     );
@@ -92,9 +87,13 @@ class _MapPageProjectsListWidgetState extends State<MapPageProjectsListWidget> {
       padding: const EdgeInsets.all(8),
       itemCount: widget.projects.length,
       itemBuilder: (BuildContext context, int index) {
-        return MapPageProjectsListItemWidget(
-          size: widget.size,
+        return ProjectItemWidget(
           project: widget.projects[index],
+          onProjectClicked: (project) {
+            _mapBloc.add(
+              MapEventOpenInfoWindow(project: widget.projects[index]),
+            );
+          },
         );
       },
       separatorBuilder: (context, index) => const SizedBox(height: 8),
